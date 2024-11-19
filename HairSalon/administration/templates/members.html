@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header>
+         <h1> List of all members in the database! </h1>
+        <h2> Choose which member you want to modify! </h2>
+        <a href="{{ url_for('administration.add_member') }}"><button id="addMemberButtonAdmin">I want to add a member Instead</button></a>
+    </header>
+
+    <main id="main-ul-box">
+        {% for member in members %}
+        {% if (not member.user_type == 'super') and (not current_user._User__user_id == member.user_id) %}
+            {% if ((current_user._User__user_type == 'user') and (member.user_type == 'client' or member.user_type == 'professional')) or (current_user._User__user_type == 'super') %}
+                <div class="ul-box">
+                    <ul>
+                        <li><strong> User_Id: </strong> {{ member.user_id }}</li>
+                        <li><strong> User_Type: </strong> {{ member.user_type }}</li>
+                        <li><strong> User_Name: </strong> {{ member.user_name }}</li>
+                        <li><strong> Email: </strong> {{ member.email }}</li>
+                        <li><strong> Phone_Number: </strong> {{ member.phone_number }}</li>
+                        <li><strong> Address:</strong> {{ member.address }} </li>
+                        <li><strong> Age: </strong> {{ member.age }}</li>
+                        {% if member.user_type == 'professional' %}
+                            <li><strong>Speciality: </strong> {{ member.speciality }}</li>
+                        {% endif %}
+                        <a href="{{ url_for('administration.delete_member', user_id = member.user_id) }}"><button class="delete-member" id="{{ member.user_id }}">Delete This Member!</button></a>
+                        {% if member.is_active == 1 %}
+                            <a href="{{ url_for('administration.block_member', user_id = member.user_id) }}"><button>Block This Member</button></a>
+                        {% elif member.is_active == 0 %}
+                            <a href="{{ url_for('administration.unblock_member', user_id = member.user_id) }}"><button>Unblock This Member</button></a>
+                        {% endif %}
+                        <a href="{{ url_for('administration.warn_member', user_id = member.user_id) }}"><button>Warn This Member!</button></a>
+                        {% if (current_user._User__user_type == 'super') or (current_user._User__user_type == 'user') %}
+                            <a href="{{ url_for('administration.flag_member', user_id = member.user_id) }}"><button>Flag This Member!</button></a>
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endif %}
+        {% endif %}
+        {% endfor %}
+    </main>
+{% endblock content %}

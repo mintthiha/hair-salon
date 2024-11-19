@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header>
+        <h1> Please select an appointment to report: </h1>
+    </header>
+    <main id="main-ul-box">
+        {% if appointments is none %}
+            <h3> There are currently no appointments in the database! </h3>
+        {% else %}
+            {% for appointment in appointments %}
+            <div class="ul-box">
+                </ul>
+                {% if current_user._User__user_type == 'client' %}
+                    <a href="{{ url_for('report.create_report', appointment_id = appointment.appointment_id, customer_id = appointment.customer_id) }}">
+                {% elif current_user._User__user_type == 'professional' %}
+                    <a href="{{ url_for('report.reply_report', appointment_id = appointment.appointment_id, service_id = appointment.service_id) }}">
+                {% endif %}
+                <ul>
+                    <li><strong>Status:</strong> {{ appointment.status }}</li>
+                    <li><strong>Street:</strong> {{ appointment.approved }}</li>
+                    <li><strong>Date :</strong> {{ appointment.date_appoint }}</li>
+                    <li><strong>Slot:</strong> {{ appointment.slot }}</li>
+                    <li><strong>Venue:</strong> {{ appointment.venue }}</li>
+                    <li><strong>Service Name:</strong> {{ appointment.service_name }}</li>
+                    <li><strong>Customer Name:</strong> {{ appointment.customer_name }}</li>
+                    <li><a href="{{ url_for('appointment.get_appointment_by_id', appointment_id = appointment.appointment_id) }}">See details</a></li>
+                </ul>
+                </a>
+            </div>
+            {% endfor %}
+        {% endif %}
+    </main>
+    <footer>
+
+    </footer>
+{% endblock content %}

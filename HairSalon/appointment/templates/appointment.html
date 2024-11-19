@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="ul-box">
+        <ul>
+            <li>Appointment ID: {{appointment.appointment_id}}</li>
+            <li>Status: {{appointment.status}}</li>
+            <li>Approved: {{appointment.approved}}</li>
+            <li>Date: {{appointment.date_appoint}}</li>
+            <li>Venue: {{appointment.venue}}</li>
+            <li>Service ID: {{appointment.service_id}}</li>
+            <li>Service Name: {{appointment.service_name}}</li>
+            <li>Customer ID: {{appointment.customer_id}}</li>
+            <li>Customer Name: {{appointment.customer_name}}</li>
+            <li>Employee Name: {{employee.user_name}}</li>
+        </ul>
+    </div>
+
+{% endblock content %}

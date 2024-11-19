@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+    <header>
+        <h1>Add your new report here!</h1>
+    </header>
+    <main>    
+        <section class="section-form">
+            <div class="formWrapper">
+                <form action="{{ url_for('administration.add_report', appointment_id = appointment_id) }}" method="POST">
+                    {{ report_form.csrf_token }}
+                    <h1>Adding Report Form</h1>
+                    <div class="inputBox">
+                        {{ report_form.status( placeholder = "Enter Status") }}
+                    </div>
+                    <div class="inputBox">
+                        {{ report_form.date_report( placeholder = "Enter Date") }}
+                    </div>
+                    <div class="inputBox">
+                        {{ report_form.feedback_employee( placeholder = "Enter Employee Feedback") }}
+                    </div>
+                    <div class="inputBox">
+                        {{ report_form.feedback_customer( placeholder = "Enter Customer Feedback") }}
+                    </div>
+                    {{ report_form.submit(class='btn')}}
+                </form>
+            </div>
+
+        </section>
+    </main>
+{% endblock content %}

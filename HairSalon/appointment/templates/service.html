@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header>
+        <h1> Please select a service: </h1>
+    </header>
+    <main id="main-ul-box">
+        {% if services is none %}
+            <h3> There are currently no services in the database! </h3>
+        {% else %}
+            {% for service in services %}
+                    <div class="ul-box">
+                        <a href="{{ url_for('appointment.create_appointment', service_id=service.service_id, service_name=service.service_name) }}">
+                        <ul>
+                            <li><strong>Service Name:</strong> {{ service.service_name }}</li>
+                            <li><strong>Duration:</strong> {{ service.duration }} hour</li>
+                            <li><strong>Price:</strong> {{ service.price }}$</li>
+                            <li><strong>Materials:</strong> {{ service.materials }}</li>
+                            <li> <a href="{{ url_for('appointment.get_employee', employee_id = service.employee_id) }}"> See who is offering this service </a> </li>
+                        </ul>
+                        </a>
+                    </div>
+            {% endfor %}
+        {% endif %}
+    </main>
+    <footer>
+    </footer>
+{% endblock content %}

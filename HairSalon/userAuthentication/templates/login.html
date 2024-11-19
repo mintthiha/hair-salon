@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section class="section-form">
+        <div class="formWrapper">
+            <form method="post" action="">
+                <h1>Login</h1>
+                {{ form.hidden_tag() }}
+                <div class="inputBox">
+                    {{form.user_name( placeholder = "Enter Username") }}
+                </div>
+                <div class="inputBox">
+                    {{form.password( placeholder = "Enter Password")}}
+                </div>
+                {{form.submit(class="btn")}}
+            </form>
+        </div>
+    </section>
+
+{% endblock content %}

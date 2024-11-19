@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+    {% block content %}
+        <div class="container">
+            <div class="member">
+                <img src="{{ url_for('static', filename='images/team-images/mohammadpfp.jpg') }}" alt="Member 1">
+                <h2>Mohammad Mahbub Rahman</h2>
+                <p><strong>Description:</strong> I am a second year Computer Science student at Dawson College. I helped develop this flask application with my teammates, i made the booking appointments feature, i made the create and reply reports feature for customers and employees, i helped configure the database, i added some other interactivity in the website and also helped my teammates when they needed. </p>
+                <p><strong>Student ID:</strong> 2236383</p>
+            </div>
+            <div class="member">
+                <img src="{{ url_for('static', filename='images/team-images/mint.png') }}" alt="Member 2">
+                <h2>Thiha Min Thein</h2>
+                <p><strong>Description:</strong> Welcome, I hold two years of experiences as a Computer Science student. Me and my team came up with this Hair Salon website where I oversee the display of the website, the management of users of the application, and the data format using JSON. I also ensured the cleaness of the design idea and was responsible for any debugging! Enjoy the website!</p>
+                <p><strong>Student ID:</strong> 2245136</p>
+            </div>
+            <div class="member">
+                <img src="{{ url_for('static', filename='images/team-images/HuguesPFP.png') }}" alt="Member 3">
+                <h2>Hugues Rouillard</h2>
+                <p><strong>Description:</strong> Hello everyone, coincidentally I am also a second year Computer Science student, and although I am sleeping in the picture, that is not the only thing me and my teammates did for this project. I mainly focused on database queries and setup, login functions, production code for different forms and pages and assisted my teammates if they were stuck on something. Enjoy!</p>
+                <p><strong>Student ID:</strong> 2242264<p>
+            </div>
+        </div>
+    {% endblock %}

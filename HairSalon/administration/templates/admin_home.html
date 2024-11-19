@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<main id="admin-home-main">
+    <h1> Welcome To Admin Home! </h1>
+        <h2> What would you like to do today? </h2>
+
+        {% if current_user._User__user_type == 'user' or current_user._User__user_type == 'super' %}
+             <a href="{{ url_for('administration.members') }}"><button id="memberModButton">Member Modification</button></a> 
+        {% endif %}
+        {% if current_user._User__user_type == 'appoint' or current_user._User__user_type == 'super' %}
+            <a href=" {{url_for('administration.appointments')}} "><button id="appointModButton">Appointments Modification</button></a> 
+            <a href=" {{ url_for('administration.reports') }}"><button id="reportModButton">Reports Modification</button></a>
+        {% endif %}
+        <a href=" {{ url_for('administration.logs') }}"><button> Audit Log </button></a>
+</main>
+{% endblock content %} 

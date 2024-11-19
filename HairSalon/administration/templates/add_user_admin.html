@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header>
+    </header>
+    <main>
+        <section class="section-form">
+            <div class="formWrapper">
+                <form action="{{ url_for('administration.add_member') }}" method="POST" enctype="multipart/form-data">
+                    {{user_form.hidden_tag() }}
+                    <h1>Add New Member!</h1>
+                    <div class="inputBox">
+                        {% if current_user._User__user_type == 'super' %}
+                            {{user_form.user_type(placeholder="Choose the user type!")}}
+                        {% else %}
+                            <select name="user_type" id="user_type">
+                                <option value="client">Client</option>
+                                <option value="professional">Professional</option>
+                            </select>
+                        {% endif %}
+                    </div>
+                    <div class="inputBox">
+                        {{user_form.username(placeholder="Enter the new username.")}}
+                    </div>
+                    <div class="inputBox">
+                        {{user_form.password(placeholder="Enter the new password!")}}
+                    </div>
+                    <div class="inputBox">
+                        {{user_form.email(placeholder="Enter the email!")}}
+                    </div>
+                    <div class="inputBox">
+                        {{user_form.user_image(placeholder="Upload a profile picture")}}
+                    </div>
+                    <div class="inputBox">
+                        {{user_form.phone_number(placeholder="Enter the phone number!")}}
+                    </div>
+                    <div class="inputBox">
+                        {{user_form.address(placeholder="Enter the address!")}}
+                    </div>
+                    <div class="inputBox">
+                        {{user_form.age(placeholder="Enter the age!")}}
+                    </div>
+                    <div class="inputBox">
+                        {{user_form.speciality(placeholder="Enter the speciality!", value="Not Applicable", class="hidden")}}
+                    </div>
+                    {{user_form.submit(class='btn')}}
+                </form>
+            </div>
+        </section>
+
+    </main>
+{% endblock content %}

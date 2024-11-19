@@ -1,0 +1,362 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: sans-serif;
+}
+
+.visible {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    width: 100%;
+    height: 100vh; 
+    background-image: linear-gradient(rgba(0,0,0,0.65),rgba(0,0,0,0.65)), url("../images/background.jpg");
+    background-size: cover;
+    background-position: center; 
+    color: white;
+}
+
+nav {
+    width: 85%;
+    margin: auto;
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+#navImg {
+    width: 120px;
+    cursor: pointer;
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+
+nav ul li::after {
+    content: '';
+    height: 4px;
+    width: 0;
+    background: orangered;
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    transition: 0.5s;
+}
+
+nav ul li:hover::after {
+    width: 100%;
+    justify-content: center;
+}
+
+header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#profilepic {
+    width: 50px;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: lightgreen;
+}
+
+.flashMessages {
+    border: solid 2px white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: bolder;
+}
+
+button a {
+    color: black;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+}
+
+#WelcomeSection {
+    display: flex;
+    font-size: 10px;
+    justify-content: end;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+#userpfp {
+    width: 30px;
+    border-radius: 20%;
+}
+
+.section-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formWrapper {
+    width: 420px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #E6E6FA;
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.formWrapper h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.formWrapper .inputBox {
+    width: 100%;
+    height: 40px;
+    margin: 30px 0;
+}
+
+.inputBox input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 20px;
+    color: 	#E0B0FF;
+    text-align: center;
+}
+
+.inputBox select {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 40px;
+    font-size: 20px;
+    color: 	#E0B0FF;
+    text-align: center;
+}
+
+.inputBox textarea {
+    padding-left: 10px;
+    margin-left: 120px;
+}
+
+.inputBox input::placeholder {
+    color: 	#E0B0FF;
+}
+
+.inputBox input[type="file"] {
+    width: 81%;
+    padding: 0 0 0 80px;
+}
+
+.formWrapper .btn {
+    width: 100%;
+    height: 45px;
+    background: white;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: 	darkslateblue;
+    font-weight: 600;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px auto;
+}
+
+.member {
+    background-color: beige;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.member h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.member p {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+#main-ul-box{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+@media only screen and (max-width: 768px){
+    #main-ul-box{
+        display: grid;
+        grid-template-columns: 100%;
+    }
+}
+
+.ul-box {
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    margin: 10px;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    backdrop-filter: blur(10px);
+}
+
+ .ul-box ul {
+    position: relative;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ul-box ul li {
+    list-style: none;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, .1);
+    transition: transform 0.5s; 
+}
+
+
+.ul-box ul li:hover {
+    text-align: center;
+    transform: scale(1.04);
+    z-index: 100;
+    background: #F2D2BD;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, .2);
+    color: black;
+}
+
+.ul-box ul li a {
+    color: #DE3163;
+}
+
+.ul-box .profile-ul {
+    display: flex;
+    position: relative;
+    opacity: 1;
+    flex-direction: column;
+}
+
+.ul-box .profile-ul li {
+    font-size: 40px;
+}
+
+button {
+    padding: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 10px;
+    cursor: pointer;
+    background: #FFF5EE;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    transition-duration: 0.3s;
+    transition-property: box-shadow, transform;
+}
+
+button:hover, button:focus, button:active {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+}
+
+#admin-home-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ul-box ul button {
+    padding: 5px;
+}
+
+#api-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#api-buttons-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#api-request-section, #api-response-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#api-request-section a, #api-request-section p, #api-response-section p {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#api-request-section a {
+    color: lightgreen;
+}
+
+#api-request-section p, #api-request-section a, #api-response-section p{
+    padding: 20px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    backdrop-filter: blur(10px);
+}

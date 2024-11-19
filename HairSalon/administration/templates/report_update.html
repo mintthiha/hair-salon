@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+    <header>
+        <h1>Update the report here!</h1>
+        <h2>Report you are editing:</h2>
+    </header>
+    <main>    
+        <div class="ul-box">
+            <ul>
+                <li><strong>Appointment ID:</strong> {{ old_report.appointment_id }}</li>
+                <li><strong>Report Status:</strong> {{ old_report.status }}</li>
+                <li><strong>Report Date:</strong> {{ old_report.date_report }}</li>
+                <li><strong>Employee Feedback:</strong> {{ old_report.feedback_employee }}</li>
+                <li><strong>Customer Feedback:</strong> {{ old_report.feedback_customer }}</li>
+            </ul>
+        </div>
+        <section class="section-form">
+            <div class="formWrapper">
+                <form action="{{ url_for('administration.change_report', report_id = report_id) }}" method="POST">
+                    <h1>Update Area</h1>
+                    {{ edited_report_form.csrf_token }}
+                    <div class="inputBox">
+                        {{ edited_report_form.status(value=old_report.status) }}
+                    </div>
+                    <div class="inputBox">
+                        {{ edited_report_form.date_report(value=old_report.date_report) }}
+                    </div>
+                    <div class="inputBox">
+                        {{ edited_report_form.feedback_employee(value=old_report.feedback_employee) }}
+                    </div>
+                    <div class="inputBox">
+                        {{ edited_report_form.feedback_customer(value=old_report.feedback_customer) }}
+                    </div>
+                    {{ edited_report_form.submit(class='btn')}}
+                </form>
+            </div>
+        </section>
+    </main>
+{% endblock content %}

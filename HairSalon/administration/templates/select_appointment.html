@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<header>
+    <h1> Pick an appointment you want to create a report on! </h1>
+</header>
+<main id="main-ul-box">
+        {% for appointment in appointments %}
+            <div class="ul-box">
+                <ul>
+                    <li><strong>Status:</strong> {{ appointment.status }}</li>
+                    <li><strong>Street:</strong> {{ appointment.approved }}</li>
+                    <li><strong>Date :</strong> {{ appointment.date_appoint }}</li>
+                    <li><strong>Slot:</strong> {{ appointment.slot }}</li>
+                    <li><strong>Venue:</strong> {{ appointment.venue }}</li>
+                    <li><strong>Service Name:</strong> {{ appointment.service_name }}</li>
+                    <li><strong>Customer Name:</strong> {{ appointment.customer_name }}</li>
+                    <!-- <li><a href="{{ url_for('appointment.get_appointment_by_id', appointment_id = appointment.appointment_id) }}">See details</a></li>
+                </ul> -->
+                <a href="{{ url_for('administration.add_report', appointment_id = appointment.appointment_id) }}"><button>Create Report For This Appointment</button></a>
+                </ul>
+            </div>
+        {% endfor %}
+</main>
+
+    
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header>
+    </header>
+    <main>
+      <section class="section-form">
+        <div class="formWrapper">
+          <form method="POST" action="{{ url_for('administration.select_service_and_user') }}">
+            <h1>User & Service Selection</h1>
+            <div class="inputBox">
+              <select name="service">
+                {% for service in services %}
+                  <option value="{{ service.service_id }}">{{ service.service_name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="inputBox">
+              <select name="user">
+                {% for user in users %}
+                  <option value="{{ user.user_id }}">{{ user.user_name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+        </div>
+    </main>
+    <footer>
+    </footer>
+{% endblock content %}

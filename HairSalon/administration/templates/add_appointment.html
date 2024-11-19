@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+    <header>
+    </header>
+    <main>    
+        <section class="section-form">
+            <div class="formWrapper">
+                <form action="{{ url_for('administration.add_appointment', service_id=service_id, user_id=user_id) }}" method="POST">
+                    {{appointment_form.csrf_token}}
+                    <h1>Add Appointment here!</h1>
+                    <div class="inputBox">
+                        {{appointment_form.date_appoint}}
+                    </div>
+                    <div class="inputBox">
+                        {{appointment_form.slot}}
+                    </div>
+                    <div class="inputBox">
+                        {{appointment_form.venue}}
+                    </div>
+                    {{appointment_form.submit(placeholder="Add Appointment!", class='btn')}}
+                </form>
+            </div>
+        </section>
+    </main>
+{% endblock content %}

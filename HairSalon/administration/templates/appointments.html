@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<header>
+     <h1> List of all appointments in the database! </h1>
+    <h2> Choose which appointment you want to modify! </h2>
+    <a href="{{ url_for('administration.select_service_and_user') }}"><button id="addAppointmentButtonAdmin">I want to add an appointment instead</button></a>
+</header>
+<main id="main-ul-box">
+    {% for appointment in appointments %}
+        <div class="ul-box">
+            <ul>
+                <li><strong>Status:</strong> {{ appointment.status }}</li>
+                <li><strong>Street:</strong> {{ appointment.approved }}</li>
+                <li><strong>Date :</strong> {{ appointment.date_appoint }}</li>
+                <li><strong>Slot:</strong> {{ appointment.slot }}</li>
+                <li><strong>Venue:</strong> {{ appointment.venue }}</li>
+                <li><strong>Service Name:</strong> {{ appointment.service_name }}</li>
+                <li><strong>Customer Name:</strong> {{ appointment.customer_name }}</li>
+                <!-- <li><a href="{{ url_for('appointment.get_appointment_by_id', appointment_id = appointment.appointment_id) }}">See details</a></li>
+            </ul> -->
+            <a href="{{ url_for('administration.delete_appointment', appointment_id = appointment.appointment_id) }}"><button class="delete-appointment" id="{{ appointment.appointment_id }}">Delete This Appointment!</button></a>
+            <a href="{{ url_for('administration.change_appointment', appointment_id = appointment.appointment_id) }}"><button>Change This Appointment!</button></a>
+            </ul>
+        </div>
+    {% endfor %}
+</main>
+
+{% endblock content %}

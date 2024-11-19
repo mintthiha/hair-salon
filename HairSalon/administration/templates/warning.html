@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header>
+    </header>
+    <main>    
+        <section class="section-form">
+            <div class="formWrapper">
+                <form action="{{ url_for('administration.warn_member', user_id = warned_user_id) }}" method="POST">
+                    <h1>Enter your warning here!</h1>
+                    {{warn_form.hidden_tag() }}
+                    <div class="inputBox">
+                        {{warn_form.message(placeholder="Enter your warning message!") }}
+                    </div>
+                    {{warn_form.submit(class='btn')}}
+                </form>
+            </div>
+        </section>
+    </main>
+{% endblock content %} 

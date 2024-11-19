@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="ul-box">
+    <ul>
+        <li>Name: {{employee.user_name}}</li>
+        <li>Email: {{employee.email}}</li>
+        <li>Picture: <img src="{{ url_for('static', filename='images/user-images/' + employee.user_image) }}" id="profilepic"></li>
+        <li>Phone Number: {{employee.phone_number}}</li>
+        <li>Address: {{employee.address}}</li>
+        <li>Age: {{employee.age}}</li>
+        <li>Speciality: {{employee.speciality}}</li>
+    </ul>
+</div>
+
+
+{% endblock content %}

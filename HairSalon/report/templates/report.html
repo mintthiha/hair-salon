@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header>
+        <h1> All Reports </h1>
+        {% if current_user._User__user_type == 'client' %}
+            <a href="{{ url_for('report.all_appointments') }}"><button> CLICK HERE TO MAKE A NEW REPORT </button></a> 
+        {% elif current_user._User__user_type == 'professional' %}
+            <a href="{{ url_for('report.all_appointments') }}"><button> CLICK HERE TO REPLY TO REPORT </button></a> 
+        {% endif %}
+    </header>
+    <main id="main-ul-box">
+        {% if reports is none %}
+            <h3> There are currently no services in the database! </h3>
+        {% else %}
+            {% for report in reports %}
+                <div class="ul-box">
+                    <ul>
+                        <li><strong>Appointment ID:</strong> {{ report.appointment_id }}</li>
+                        <li><strong>Report Status:</strong> {{ report.status }}</li>
+                        <li><strong>Report Date:</strong> {{ report.date_report }}</li>
+                        <li><strong>Customer Feedback:</strong> {{ report.feedback_customer }}</li>
+                        <li><strong>Employee Feedback:</strong> {{ report.feedback_employee }}</li>
+                    </ul>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </main>
+    <footer>
+
+    </footer>
+{% endblock content %}

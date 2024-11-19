@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header>
+    </header>
+    <main>
+        <section class="section-form">
+            <div class="formWrapper">
+                <form action="{{ url_for('appointment.create_service') }}" method="POST" enctype="multipart/form-data">
+                    {{form.hidden_tag() }}
+                    <h1>Create a Service!</h1>
+                    <div class="inputBox">
+                        {{form.service_name(placeholder="Enter service name!")}}
+                    </div>
+                    <div class="inputBox">
+                        {{form.duration(placeholder="Enter duration!")}}
+                    </div>
+                    <div class="inputBox">
+                        {{form.price(placeholder="Enter price!")}}
+                    </div>
+                    <div class="inputBox">
+                        {{form.materials(placeholder="Enter materials!")}}
+                    </div>
+                    {{form.submit(class='btn')}}
+                </form>
+            </div>
+        </section>
+        
+    </main>
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header>
+        <h1>Our API!</h1>
+    </header>
+    <main id="api-main">
+        <section id="api-buttons-section">
+            <a href="{{ url_for('api.get_appointments_button') }}"><button>GET : List Appointments</button></a>
+            <a href="{{ url_for('api.get_appointment_button') }}"><button>GET : Single Appointment</button></a>
+            <a href="{{ url_for('api.get_appointment_button_not_found') }}"><button>GET : Single Appointment NOT FOUND</button></a>
+            <a href="{{ url_for('api.get_appointments_filter_status_button') }}"><button>GET : Filter Appointment By Status</button></a>
+            <a href="{{ url_for('api.get_appointments_filter_slot_button') }}"><button>GET : Filter Appointment By Slot</button></a>
+            <a href="{{ url_for('api.get_appointments_filter_venue_button') }}"><button>GET : Filter Appointment By Venue</button></a>
+            <a href="{{ url_for('api.get_appointments_search_service_name_button') }}"><button>GET : Search Appointment By Service Name</button></a>
+            <a href="{{ url_for('api.get_appointments_search_service_id_button') }}"><button>GET : Search Appointment By Service ID</button></a>
+            <a href="{{ url_for('api.get_appointments_search_client_name_button') }}"><button>GET : Search Appointment By Customer Name</button></a>
+            <a href="{{ url_for('api.get_appointments_search_client_id_button') }}"><button>GET : Search Appointment By Customer ID</button></a>
+            <a href="{{ url_for('api.get_appointments_deleted_appointment_button') }}"><button>DELETE</button></a>
+            <a href="{{ url_for('api.get_appointments_updated_appointment_button') }}"><button>UPDATE</button></a>
+        </section>
+        <section id="api-request-section">
+            <h2>Request</h2>
+            {% if url is not defined %}
+                <p> Please click one of the buttons! </p>
+            {% else %}
+                <a href="{{ url }}"> {{ url }} </a>
+            {% endif %}
+            {% if request_body is not defined %}
+                <p id="request-body"> There is no request body for this request.</p>
+            {% else %}
+                <p> {{ request_body }}</p>
+            {% endif %}  
+        </section>
+        <section id="api-response-section">
+            <h2>Response</h2>
+            {% if response is not defined %}
+                <p> Please click one of the buttons!</p>
+            {% else %}
+                <p class="{{ category }}"> {{ response }}</p>
+            {% endif %}
+        </section>
+    </main>
+{% endblock content %}

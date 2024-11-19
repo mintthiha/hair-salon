@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<main class="main-ul-box">
+    <div class="ul-box">
+        <ul class="profile-ul">
+            <li><img src="{{ url_for('static', filename='images/user-images/' + context.get('picture')) }}" id="profilepic"></li>
+            <li>Name: {{context.get('name')}}</li>
+            <li>Age: {{context.get('age')}}</li>
+            <li>Email: {{context.get('email')}}</li>
+            <li>Address: {{context.get('address')}}</li>
+            <li>Flags: {{context.get('flags')}}</li>
+            {% if warning.description %}
+                <li>Flags: {{warning.description}}</li>
+            {% endif %}
+            <a href="{{ url_for('userAuthentication.user_change_password') }}"><button> Update Password </button></a>
+            <a href="{{ url_for('userAuthentication.logout') }}"><button> Log Out </button></a>
+        </ul>
+    </div>
+</main>
+
+
+{% endblock content %}

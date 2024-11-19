@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <header>
+        <h1> All Logs </h1>
+    </header>
+    <main id="main-ul-box">
+        {% if logs is none %}
+            <h3> There are currently nothing in the logs table! </h3>
+        {% else %}
+            {% for log in logs %}
+                   <div class="ul-box">
+                        <ul>
+                            <li><strong>Log ID:</strong> {{ log.log_id }}</li>
+                            <li><strong>Username:</strong> {{ log.user_name }}</li>
+                            <li><strong>Usertype:</strong> {{ log.user_type }}</li>
+                            <li><strong>Action Time:</strong> {{ log.action_time }}</li>
+                            <li><strong>Action Type:</strong> {{ log.action_type }}</li>
+                            <li><strong>Table Name:</strong> {{ log.table_name }}</li>
+                        </ul>
+                    </div>
+            {% endfor %}
+        {% endif %}
+    </main>
+    <footer>
+
+    </footer>
+{% endblock content %}

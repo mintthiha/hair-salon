@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <section class="section-form">    
+        <div class="formWrapper">
+            <h1>Change Password</h1>
+            <form method="post" action="">
+                {{ form.hidden_tag() }}
+                <div class="inputBox">
+                    {{form.password( placeholder = "Enter new password")}}
+                </div>
+                {{form.submit(class='btn')}}
+            </form>
+        </div>
+    </section>
+
+
+{% endblock content %}

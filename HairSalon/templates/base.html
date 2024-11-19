@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src=" {{ url_for('static', filename='js/myscripts.js')}}"></script>
+    <script src=" {{ url_for('static', filename='js/confirmDelete.js')}}"></script>
+    <title>Hair Salon</title>
+</head>
+<body>
+    <section id="WelcomeSection">
+        {% if current_user.is_authenticated %}
+             <h1>
+                Welcome back! {{ current_user._User__user_name }}! ({{ current_user._User__user_type }})
+                <img src="{{ url_for('static', filename='images/user-images/' + current_user._User__user_image) }}" id="profilepic">
+            </h1>
+        {% else %}
+            <h1>
+                Welcome, Guest
+            </h1>
+        {% endif %}
+    </section>
+    <nav>
+        <img id="navImg" src="{{ url_for('static', filename='images/logo.png') }}">
+
+        <ul>
+            <li><a href="{{ url_for('main.home') }}"> HOME </a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('userAuthentication.logout') }}"> LOG OUT </a></li>
+                <li><a href="{{ url_for('userAuthentication.user_profile') }}"> MY PROFILE </a></li>
+                {% if current_user._User__access_level == 1 %}
+                    {% if current_user._User__user_type == "professional" %}
+                        <li><a href="{{ url_for('appointment.create_service') }}"> CREATE A SERVICE </a></li>
+                    {% endif %}
+                    <li><a href="{{ url_for('appointment.all_services') }}"> BOOK AN APPOINTMENT </a></li>
+                    <li><a href="{{ url_for('report.all_reports') }}"> REPORT </a> </li>                
+                {% elif current_user._User__access_level > 1 %}
+                    <li><a href="{{ url_for('administration.admin_home') }}"> ADMIN HOME </a></li>
+                {% endif %}
+            {% else %}
+                <li><a href="{{ url_for('userAuthentication.register') }}"> REGISTER </a></li>
+                <li><a href="{{ url_for('userAuthentication.login') }}"> LOG IN </a></li>
+            {% endif %}
+            <li><a href="{{ url_for('main.about_page') }}"> ABOUT US </a></li>
+            <li><a href="{{ url_for('api.api_root')}}">API SECTION !</a></li>
+        </ul>
+    </nav>
+    
+    {% block content %}
+    {% endblock content %}
+    <section>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message, category in messages %}
+                    <section class="{{category}} flashMessages">
+                        {{ message }}
+                    </section>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </section>
+</body>
+</html>

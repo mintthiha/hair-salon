@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+    <header>
+        <h1>Create Here!</h1>
+    </header>
+    <main>    
+        <section class="section-form">
+            <div class="formWrapper">
+                <h3> Customer feedback: {{report.feedback_customer}}</h3>
+                <form action="{{ url_for('report.reply_report', appointment_id = appointment_id, service_id = service_id) }}" method="POST">
+                    {{report_form.csrf_token}}
+                    <div class="inputBox">
+                        {{report_form.feedback_employee(placeholder="Enter employee feedback")}}
+                    </div>
+                    {{report_form.submit(class='btn')}}
+                </form>
+            </div>
+        </section>
+    </main>
+{% endblock content %}

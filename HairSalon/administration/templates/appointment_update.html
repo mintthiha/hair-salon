@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+    <header>
+        <h1>Update the appointment here!</h1>
+        <h2>Appointment you are editing</h2>
+    </header>
+    <main>    
+        <div class="ul-box">
+            <ul>
+                <li><strong>Status:</strong> {{ old_appointment.status }}</li>
+                <li><strong>Street:</strong> {{ old_appointment.approved }}</li>
+                <li><strong>Date :</strong> {{ old_appointment.date_appoint }}</li>
+                <li><strong>Slot:</strong> {{ old_appointment.slot }}</li>
+                <li><strong>Venue:</strong> {{ old_appointment.venue }}</li>
+                <li><strong>Service Name:</strong> {{ old_appointment.service_name }}</li>
+                <li><strong>Customer Name:</strong> {{ old_appointment.customer_name }}</li>
+            </ul>
+        </div>
+        <section class="section-form">
+            <div class="formWrapper">
+                <form action="{{ url_for('administration.change_appointment', appointment_id = appointment_id) }}" method="POST">
+                    {{ edited_appointment_form.csrf_token }}
+                    <h1>Update Area</h1>
+                    <div class="inputBox">
+                        {{ edited_appointment_form.date_appoint(placeholder="Choose a new date" if old_appointment.date_appoint else '', value=old_appointment.date_appoint) }}
+                    </div>
+                    <div class="inputBox">
+                        {{ edited_appointment_form.slot(placeholder="Enter a new slot", value=old_appointment.slot) }}
+                    </div>
+                    <div class="inputBox">
+                        {{ edited_appointment_form.venue(placeholder="Enter a new venue", value=old_appointment.venue) }}
+                    </div>
+                    {{ edited_appointment_form.submit(class='btn') }}
+                </form>
+            </div>
+
+        </section>
+    </main>
+{% endblock content %}
